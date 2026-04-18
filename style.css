@@ -5,138 +5,414 @@
 }
 
 :root {
-  --green: #b8f5b0;
-  --green-dark: #a0e898;
-  --bg: #f5f5f0;
-  --text: #111;
-  --radius: 28px;
-  --gap: 16px;
+  --mint:       #b4f0ab;
+  --mint-hover: #9de593;
+  --bg:         #e8e8e3;
+  --dark:       #0e0e0e;
+  --text:       #0c0c0c;
+  --muted:      #5c5c5c;
+  --white:      #ffffff;
+  --radius:     24px;
+  --gap:        12px;
 }
 
-html, body {
-  height: 100%;
-  background: var(--bg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 32px;
+  padding: 32px 20px;
 }
 
-.grid {
+/* ── Grid ───────────────────────────────────────── */
+
+.bento {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto;
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--gap);
   width: 100%;
-  max-width: 900px;
+  max-width: 1080px;
 }
 
+/* ── Base card ──────────────────────────────────── */
+
 .card {
-  background: var(--green);
+  background: var(--mint);
   border-radius: var(--radius);
-  padding: 36px 40px;
+  padding: 28px 32px;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  transition: transform 0.2s ease, background 0.2s ease;
+  flex-direction: column;
+  transition: transform 0.18s ease, background 0.18s ease;
 }
 
 .card:hover {
-  background: var(--green-dark);
-  transform: translateY(-2px);
+  background: var(--mint-hover);
+  transform: translateY(-3px);
 }
 
-.card span {
-  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
+/* ── Label ──────────────────────────────────────── */
 
-/* Tagline — top left, spans full width minus role card */
-.card--tagline {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-/* Role badge — top right */
-.card--role {
-  grid-column: 2;
-  grid-row: 1;
-  justify-content: center;
-  align-items: center;
-}
-
-.card--role span {
-  font-size: clamp(1.4rem, 3vw, 2rem);
+.label {
+  display: block;
+  font-size: 10px;
   font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
 }
 
-/* Name — middle left */
-.card--name {
+/* ── Hero ───────────────────────────────────────── */
+
+.card--hero {
+  grid-column: 1 / 4;
+  grid-row: 1;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 40px 48px;
+  min-height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text h1 {
+  font-size: clamp(52px, 6vw, 88px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.93;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: clamp(14px, 1.5vw, 17px);
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.hero-deco {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.04);
+  pointer-events: none;
+}
+
+/* ── Role ───────────────────────────────────────── */
+
+.card--role {
+  grid-column: 4;
+  grid-row: 1;
+  justify-content: space-between;
+}
+
+.role-title {
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-top: auto;
+}
+
+/* ── ESET ───────────────────────────────────────── */
+
+.card--eset {
   grid-column: 1;
   grid-row: 2;
 }
 
-.card--name span {
-  font-size: clamp(1.4rem, 3vw, 2rem);
+.eset-name {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+
+.eset-title {
+  font-size: 14px;
+  color: var(--muted);
+  flex: 1;
+}
+
+.eset-year {
+  font-size: 12px;
   font-weight: 500;
+  color: var(--muted);
+  margin-top: 16px;
 }
 
-/* Water animation — right column, spans rows 2 & 3 */
-.card--water {
-  grid-column: 2;
-  grid-row: 2 / 4;
-  padding: 0;
-  overflow: hidden;
-  min-height: 320px;
-  position: relative;
+/* ── Projects ───────────────────────────────────── */
+
+.card--project1 {
+  grid-column: 2 / 4;
+  grid-row: 2;
 }
 
-.card--water:hover {
-  transform: translateY(-2px);
-}
-
-#waterCanvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border-radius: var(--radius);
-}
-
-/* Company — bottom left */
-.card--company {
+.card--project2 {
   grid-column: 1;
   grid-row: 3;
 }
 
-/* Responsive */
-@media (max-width: 580px) {
-  body {
-    padding: 16px;
+.card--project h3 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+}
+
+.card--project p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.tags span {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 100px;
+}
+
+/* ── CV download ────────────────────────────────── */
+
+.card--cv {
+  grid-column: 4;
+  grid-row: 2;
+  background: var(--white);
+}
+
+.card--cv:hover {
+  background: var(--white);
+  transform: translateY(-3px);
+}
+
+.cv-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.cv-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card--cv h3 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  flex: 1;
+  margin-top: 6px;
+}
+
+.cv-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: var(--mint);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 100px;
+  transition: background 0.15s ease, transform 0.15s ease;
+  align-self: flex-start;
+}
+
+.cv-btn:hover {
+  background: var(--mint-hover);
+  transform: translateY(-1px);
+}
+
+/* ── Skills ─────────────────────────────────────── */
+
+.card--skills {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.card--skills .label {
+  margin-bottom: 16px;
+}
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.skills-list li {
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 16px;
+  position: relative;
+}
+
+.skills-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  font-size: 11px;
+  color: var(--muted);
+  top: 1px;
+}
+
+/* ── Process ────────────────────────────────────── */
+
+.card--process {
+  grid-column: 3 / 5;
+  grid-row: 3;
+}
+
+.process-steps {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.step-num {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.step-name {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.process-arrow {
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+
+/* ── Social ─────────────────────────────────────── */
+
+.card--social {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.social-links a:hover {
+  opacity: 0.5;
+}
+
+/* ── CTA ────────────────────────────────────────── */
+
+.card--cta {
+  grid-column: 2 / 5;
+  grid-row: 4;
+  background: var(--dark);
+  color: var(--white);
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 48px;
+}
+
+.card--cta:hover {
+  background: #1a1a1a;
+  transform: translateY(-3px);
+}
+
+.card--cta h2 {
+  font-size: clamp(28px, 3vw, 46px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.cta-link {
+  font-size: clamp(13px, 1.4vw, 17px);
+  font-weight: 500;
+  color: var(--mint);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+  margin-left: 24px;
+  transition: opacity 0.15s;
+}
+
+.cta-link:hover {
+  opacity: 0.7;
+}
+
+/* ── Responsive ─────────────────────────────────── */
+
+@media (max-width: 820px) {
+  .bento {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
+  .card--hero     { grid-column: 1 / 3; }
+  .card--project1 { grid-column: 1 / 3; }
+  .card--process  { grid-column: 1 / 3; }
+  .card--cta      { grid-column: 1 / 3; flex-direction: column; align-items: flex-start; gap: 16px; padding: 32px; }
+}
 
-  .card--tagline,
-  .card--role,
-  .card--name,
-  .card--water,
-  .card--company {
-    grid-column: 1;
-    grid-row: auto;
-  }
+@media (max-width: 500px) {
+  body { padding: 10px; }
 
-  .card--water {
-    min-height: 260px;
-  }
+  .bento { grid-template-columns: 1fr; gap: 10px; }
+
+  .card--hero,
+  .card--project1,
+  .card--process,
+  .card--cta { grid-column: 1; }
+
+  .card--hero { padding: 28px; min-height: unset; }
+  .card--cta  { padding: 28px; }
 }

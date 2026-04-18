@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robert Kolek — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --mint:  #b4f0ab;
+      --text:  #0c0c0c;
+      --muted: #666;
+      --line:  #e0e0e0;
+    }
+
+    html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Screen wrapper ─────────────────────────── */
+    body {
+      background: #e8e8e3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+      gap: 16px;
+    }
+
+    .screen-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 100px;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.75; }
+
+    .btn--primary {
+      background: var(--text);
+      color: #fff;
+    }
+
+    .btn--secondary {
+      background: var(--mint);
+      color: var(--text);
+    }
+
+    /* ── Page (A4) ──────────────────────────────── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: #fff;
+      padding: 14mm 16mm 12mm;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+    }
+
+    /* ── Header ─────────────────────────────────── */
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 10mm;
+      border-bottom: 1.5px solid var(--text);
+    }
+
+    .cv-header h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+    }
+
+    .cv-header .title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .cv-contact {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cv-contact a,
+    .cv-contact span {
+      font-size: 11.5px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .cv-contact a:hover { color: var(--text); }
+
+    /* ── Body layout ────────────────────────────── */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 0 10mm;
+      flex: 1;
+      padding-top: 9mm;
+    }
+
+    /* ── Section ────────────────────────────────── */
+    .section {
+      margin-bottom: 8mm;
+    }
+
+    .section-title {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 5mm;
+      padding-bottom: 2.5mm;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* ── Summary ────────────────────────────────── */
+    .summary p {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* ── Experience entry ───────────────────────── */
+    .entry {
+      margin-bottom: 5mm;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .entry-company {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .entry-period {
+      font-size: 11px;
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    .entry-role {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .entry-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-left: 0;
+    }
+
+    .entry-bullets li {
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text);
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .entry-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-size: 10px;
+      top: 2px;
+    }
+
+    /* ── Skills ─────────────────────────────────── */
+    .skill-group {
+      margin-bottom: 4mm;
+    }
+
+    .skill-group-name {
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .skill-group-items {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Education ──────────────────────────────── */
+    .edu-entry {
+      margin-bottom: 3mm;
+    }
+
+    .edu-school {
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+
+    .edu-degree {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── Tagline accent ─────────────────────────── */
+    .cv-tagline {
+      margin-top: auto;
+      padding-top: 8mm;
+      border-top: 1px solid var(--line);
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── Print ──────────────────────────────────── */
+    @media print {
+      html { font-size: 13px; }
+
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .screen-actions { display: none; }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        box-shadow: none;
+        padding: 14mm 16mm 12mm;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="screen-actions">
+    <a href="index.html" class="btn btn--secondary">← Portfolio</a>
+    <button class="btn btn--primary" onclick="window.print()">Save as PDF ↓</button>
+  </div>
+
+  <div class="page">
+
+    <header class="cv-header">
+      <div>
+        <h1>Robert<br>Kolek</h1>
+        <p class="title">UX/UI Designer</p>
+      </div>
+      <div class="cv-contact">
+        <a href="mailto:hello@robertkolek.com">hello@robertkolek.com</a>
+        <a href="https://robertkolek.com" target="_blank">robertkolek.com</a>
+        <a href="https://linkedin.com/in/robertkolek" target="_blank">linkedin.com/in/robertkolek</a>
+        <span>Bratislava, Slovakia</span>
+      </div>
+    </header>
+
+    <div class="cv-body">
+
+      <!-- Left column -->
+      <aside>
+
+        <section class="section">
+          <p class="section-title">Skills</p>
+          <div class="skill-group">
+            <p class="skill-group-name">Design</p>
+            <p class="skill-group-items">Figma, Prototyping, Design Systems, Visual Design</p>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-name">Research</p>
+            <p class="skill-group-items">User interviews, Usability testing, Heuristic evaluation, Journey mapping</p>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-name">Collaboration</p>
+            <p class="skill-group-items">Agile / Scrum, Cross-functional teams, Design critique</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <p class="section-title">Education</p>
+          <div class="edu-entry">
+            <p class="edu-school">[University Name]</p>
+            <p class="edu-degree">BA Graphic Design<br>[Year] — [Year]</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <p class="section-title">Languages</p>
+          <div class="skill-group">
+            <p class="skill-group-items">English — Fluent<br>Slovak — Native<br>[Language] — [Level]</p>
+          </div>
+        </section>
+
+      </aside>
+
+      <!-- Right column -->
+      <main>
+
+        <section class="section summary">
+          <p class="section-title">About</p>
+          <p>Product designer with a focus on enterprise UX and security software. I translate complex technical systems into clear, human-centred interfaces — reducing friction for both end-users and business customers. Currently designing at ESET, one of Europe's leading cybersecurity companies.</p>
+        </section>
+
+        <section class="section">
+          <p class="section-title">Experience</p>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-company">ESET</span>
+              <span class="entry-period">2022 — present</span>
+            </div>
+            <p class="entry-role">Product Designer · Bratislava, Slovakia</p>
+            <ul class="entry-bullets">
+              <li>Led end-to-end redesign of the enterprise Security Dashboard, serving 50,000+ business users in 200 countries</li>
+              <li>Built and maintained a cross-product design system, adopted by 3 product teams</li>
+              <li>Reduced onboarding time by 40% through iterative UX research and A/B testing</li>
+              <li>Redesigned ESET Mobile for iOS & Android, improving App Store rating from 3.8 → 4.6</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-company">[Previous Company]</span>
+              <span class="entry-period">[Year] — [Year]</span>
+            </div>
+            <p class="entry-role">[Role] · [Location]</p>
+            <ul class="entry-bullets">
+              <li>[Key achievement with measurable outcome]</li>
+              <li>[Key achievement with measurable outcome]</li>
+            </ul>
+          </div>
+
+        </section>
+
+        <section class="section">
+          <p class="section-title">Selected Projects</p>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-company">Security Dashboard — ESET</span>
+            </div>
+            <ul class="entry-bullets">
+              <li>Redesigned from scratch based on 30+ stakeholder interviews and competitive analysis</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-company">ESET Mobile App</span>
+            </div>
+            <ul class="entry-bullets">
+              <li>Full UX/UI overhaul across iOS & Android; shipped within a 3-month sprint cycle</li>
+            </ul>
+          </div>
+
+        </section>
+
+        <p class="cv-tagline">"I turn complexity into clarity."</p>
+
+      </main>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

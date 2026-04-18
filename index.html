@@ -3,32 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robert Kolek — Portfolio</title>
+  <title>Robert Kolek — UX/UI Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="grid">
-    <div class="card card--tagline">
-      <span>I turn complexity into clarity</span>
-    </div>
+  <main class="bento">
 
-    <div class="card card--role">
-      <span>UX/UI</span>
-    </div>
+    <!-- Row 1 ─────────────────────────────────── -->
+    <article class="card card--hero">
+      <div class="hero-text">
+        <h1>Robert<br>Kolek</h1>
+        <p class="tagline">I turn complexity<br>into clarity</p>
+      </div>
+      <div class="hero-deco" aria-hidden="true"></div>
+    </article>
 
-    <div class="card card--name">
-      <span>Robert Kolek</span>
-    </div>
+    <article class="card card--role">
+      <span class="label">Craft</span>
+      <h2 class="role-title">UX/UI<br>Design</h2>
+    </article>
 
-    <div class="card card--water">
-      <canvas id="waterCanvas"></canvas>
-    </div>
+    <!-- Row 2 ─────────────────────────────────── -->
+    <article class="card card--eset">
+      <span class="label">Currently at</span>
+      <p class="eset-name">ESET</p>
+      <p class="eset-title">Product Designer</p>
+      <span class="eset-year">2022 —</span>
+    </article>
 
-    <div class="card card--company">
-      <span>Currently @ESET</span>
-    </div>
+    <article class="card card--project card--project1">
+      <span class="label">Case study 01</span>
+      <h3>Security Dashboard</h3>
+      <p>Redesigning enterprise threat monitoring for 50,000+ business users across 200 countries</p>
+      <div class="tags">
+        <span>UX Research</span>
+        <span>Product Design</span>
+        <span>Design Systems</span>
+      </div>
+    </article>
+
+    <!-- Place your cv.pdf in this directory. Generate it by opening cv.html → Print → Save as PDF -->
+    <article class="card card--cv">
+      <span class="label">Resume</span>
+      <div class="cv-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12M8 11l4 4 4-4"/>
+          <path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/>
+        </svg>
+      </div>
+      <h3>Download<br>CV</h3>
+      <a href="cv.pdf" download="RobertKolek_CV.pdf" class="cv-btn">Get PDF →</a>
+    </article>
+
+    <!-- Row 3 ─────────────────────────────────── -->
+    <article class="card card--project card--project2">
+      <span class="label">Case study 02</span>
+      <h3>ESET Mobile</h3>
+      <p>Security app redesign for iOS & Android</p>
+      <div class="tags">
+        <span>Mobile UX</span>
+        <span>Interaction Design</span>
+      </div>
+    </article>
+
+    <article class="card card--skills">
+      <span class="label">Toolkit</span>
+      <ul class="skills-list">
+        <li>Figma</li>
+        <li>User Research</li>
+        <li>Prototyping</li>
+        <li>Design Systems</li>
+        <li>Usability Testing</li>
+      </ul>
+    </article>
+
+    <article class="card card--process">
+      <span class="label">How I work</span>
+      <div class="process-steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <span class="step-name">Discover</span>
+        </div>
+        <span class="process-arrow" aria-hidden="true">→</span>
+        <div class="step">
+          <span class="step-num">02</span>
+          <span class="step-name">Define</span>
+        </div>
+        <span class="process-arrow" aria-hidden="true">→</span>
+        <div class="step">
+          <span class="step-num">03</span>
+          <span class="step-name">Design</span>
+        </div>
+        <span class="process-arrow" aria-hidden="true">→</span>
+        <div class="step">
+          <span class="step-num">04</span>
+          <span class="step-name">Deliver</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Row 4 ─────────────────────────────────── -->
+    <article class="card card--social">
+      <span class="label">Find me</span>
+      <nav class="social-links">
+        <a href="https://linkedin.com/in/robertkolek" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://dribbble.com/robertkolek" target="_blank" rel="noopener">Dribbble ↗</a>
+        <a href="mailto:hello@robertkolek.com">Email ↗</a>
+      </nav>
+    </article>
+
+    <article class="card card--cta">
+      <h2>Let's work<br>together</h2>
+      <a href="mailto:hello@robertkolek.com" class="cta-link">hello@robertkolek.com</a>
+    </article>
+
   </main>
-
-  <script src="water.js"></script>
 </body>
 </html>
