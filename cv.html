@@ -6,192 +6,226 @@
   <title>Robert Kolek — CV</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --mint:  #b4f0ab;
-      --text:  #0c0c0c;
-      --muted: #666;
-      --line:  #e0e0e0;
+      --mint:   #b4f0ab;
+      --ink:    #0d0d0d;
+      --muted:  #777;
+      --rule:   #e5e2dc;
+      --bg:     #e9e6df;
     }
 
     html {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 13px;
-      color: var(--text);
+      color: var(--ink);
       -webkit-font-smoothing: antialiased;
+      background: var(--bg);
     }
 
-    /* ── Screen wrapper ─────────────────────────── */
+    /* ── Screen chrome ───────────────────────── */
     body {
-      background: #e8e8e3;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 20px;
       padding: 32px 16px;
-      gap: 16px;
     }
 
-    .screen-actions {
+    .actions {
       display: flex;
-      gap: 12px;
+      gap: 10px;
+      align-items: center;
     }
 
     .btn {
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 10px 20px;
-      border-radius: 100px;
-      cursor: pointer;
-      border: none;
-      text-decoration: none;
+      gap: 5px;
       transition: opacity 0.15s;
     }
 
-    .btn:hover { opacity: 0.75; }
+    .btn:hover { opacity: 0.7; }
 
-    .btn--primary {
-      background: var(--text);
-      color: #fff;
-    }
+    .btn--dark   { background: var(--ink); color: #fff; }
+    .btn--light  { background: var(--mint); color: var(--ink); }
 
-    .btn--secondary {
-      background: var(--mint);
-      color: var(--text);
-    }
-
-    /* ── Page (A4) ──────────────────────────────── */
+    /* ── A4 page ─────────────────────────────── */
     .page {
       width: 210mm;
       min-height: 297mm;
       background: #fff;
-      padding: 14mm 16mm 12mm;
+      padding: 13mm 15mm 11mm;
       display: flex;
       flex-direction: column;
-      gap: 0;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 48px rgba(0,0,0,0.14);
     }
 
-    /* ── Header ─────────────────────────────────── */
-    .cv-header {
+    /* ── Page header ─────────────────────────── */
+    .cv-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding-bottom: 10mm;
-      border-bottom: 1.5px solid var(--text);
+      align-items: flex-end;
+      padding-bottom: 9mm;
+      border-bottom: 1.5px solid var(--ink);
     }
 
-    .cv-header h1 {
-      font-size: 38px;
-      font-weight: 800;
+    .cv-name {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 48px;
+      font-weight: 400;
       letter-spacing: -0.04em;
-      line-height: 0.95;
+      line-height: 0.9;
     }
 
-    .cv-header .title {
-      font-size: 13px;
+    .cv-title {
+      font-size: 12px;
       font-weight: 500;
       color: var(--muted);
-      margin-top: 6px;
+      margin-top: 7px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .cv-contact {
       text-align: right;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .cv-contact a,
     .cv-contact span {
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--muted);
       text-decoration: none;
+      transition: color 0.15s;
     }
 
-    .cv-contact a:hover { color: var(--text); }
+    .cv-contact a:hover { color: var(--ink); }
 
-    /* ── Body layout ────────────────────────────── */
+    /* ── Two-column body ─────────────────────── */
     .cv-body {
       display: grid;
-      grid-template-columns: 1fr 2.2fr;
-      gap: 0 10mm;
+      grid-template-columns: 58mm 1fr;
+      gap: 0 9mm;
       flex: 1;
-      padding-top: 9mm;
+      padding-top: 8mm;
     }
 
-    /* ── Section ────────────────────────────────── */
-    .section {
-      margin-bottom: 8mm;
+    /* ── Section ─────────────────────────────── */
+    .sec {
+      margin-bottom: 7mm;
     }
 
-    .section-title {
+    .sec-label {
       font-size: 9px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 5mm;
       padding-bottom: 2.5mm;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 4mm;
+      display: block;
     }
 
-    /* ── Summary ────────────────────────────────── */
-    .summary p {
-      font-size: 12.5px;
-      line-height: 1.6;
-      color: var(--text);
-    }
+    /* ── Skill groups ────────────────────────── */
+    .skill-group { margin-bottom: 3.5mm; }
 
-    /* ── Experience entry ───────────────────────── */
-    .entry {
-      margin-bottom: 5mm;
-    }
-
-    .entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 2px;
-    }
-
-    .entry-company {
-      font-size: 13px;
-      font-weight: 700;
+    .skill-group-name {
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 1.5px;
       letter-spacing: -0.01em;
     }
 
-    .entry-period {
+    .skill-group-items {
       font-size: 11px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── Education ───────────────────────────── */
+    .edu { margin-bottom: 3mm; }
+
+    .edu-school {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .edu-degree {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Languages ───────────────────────────── */
+    .lang-list {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Summary ─────────────────────────────── */
+    .summary {
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    /* ── Experience entry ────────────────────── */
+    .entry { margin-bottom: 5mm; }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .entry-co {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .entry-period {
+      font-size: 10.5px;
       color: var(--muted);
       flex-shrink: 0;
       margin-left: 8px;
     }
 
     .entry-role {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--muted);
-      margin-bottom: 4px;
+      margin-bottom: 3.5px;
     }
 
     .entry-bullets {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 3px;
-      padding-left: 0;
+      gap: 2.5px;
     }
 
     .entry-bullets li {
       font-size: 12px;
       line-height: 1.5;
-      color: var(--text);
       padding-left: 12px;
       position: relative;
     }
@@ -202,89 +236,62 @@
       left: 0;
       color: var(--muted);
       font-size: 10px;
-      top: 2px;
     }
 
-    /* ── Skills ─────────────────────────────────── */
-    .skill-group {
-      margin-bottom: 4mm;
-    }
-
-    .skill-group-name {
-      font-size: 11px;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .skill-group-items {
-      font-size: 11.5px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ── Education ──────────────────────────────── */
-    .edu-entry {
-      margin-bottom: 3mm;
-    }
-
-    .edu-school {
-      font-size: 12.5px;
-      font-weight: 600;
-    }
-
-    .edu-degree {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* ── Tagline accent ─────────────────────────── */
-    .cv-tagline {
+    /* ── Accent footer ───────────────────────── */
+    .cv-foot {
       margin-top: auto;
-      padding-top: 8mm;
-      border-top: 1px solid var(--line);
-      font-size: 11px;
-      color: var(--muted);
-      font-style: italic;
+      padding-top: 6mm;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    /* ── Print ──────────────────────────────────── */
+    .cv-foot-quote {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .cv-foot-url {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── Print ───────────────────────────────── */
     @media print {
-      html { font-size: 13px; }
+      html { background: #fff; }
 
-      body {
-        background: #fff;
-        padding: 0;
-      }
+      body { background: #fff; padding: 0; gap: 0; }
 
-      .screen-actions { display: none; }
+      .actions { display: none; }
 
       .page {
         width: 210mm;
         min-height: 297mm;
         box-shadow: none;
-        padding: 14mm 16mm 12mm;
+        padding: 13mm 15mm 11mm;
       }
 
-      @page {
-        size: A4;
-        margin: 0;
-      }
+      @page { size: A4; margin: 0; }
     }
   </style>
 </head>
 <body>
 
-  <div class="screen-actions">
-    <a href="index.html" class="btn btn--secondary">← Portfolio</a>
-    <button class="btn btn--primary" onclick="window.print()">Save as PDF ↓</button>
+  <div class="actions">
+    <a href="index.html" class="btn btn--light">← Portfolio</a>
+    <button class="btn btn--dark" onclick="window.print()">Save as PDF ↓</button>
   </div>
 
   <div class="page">
 
-    <header class="cv-header">
+    <header class="cv-top">
       <div>
-        <h1>Robert<br>Kolek</h1>
-        <p class="title">UX/UI Designer</p>
+        <h1 class="cv-name">Robert<br>Kolek</h1>
+        <p class="cv-title">UX / UI Designer</p>
       </div>
       <div class="cv-contact">
         <a href="mailto:hello@robertkolek.com">hello@robertkolek.com</a>
@@ -296,14 +303,14 @@
 
     <div class="cv-body">
 
-      <!-- Left column -->
+      <!-- Left ──────────────────────────────── -->
       <aside>
 
-        <section class="section">
-          <p class="section-title">Skills</p>
+        <section class="sec">
+          <span class="sec-label">Skills</span>
           <div class="skill-group">
             <p class="skill-group-name">Design</p>
-            <p class="skill-group-items">Figma, Prototyping, Design Systems, Visual Design</p>
+            <p class="skill-group-items">Figma, Prototyping, Visual Design, Design Systems</p>
           </div>
           <div class="skill-group">
             <p class="skill-group-name">Research</p>
@@ -315,51 +322,53 @@
           </div>
         </section>
 
-        <section class="section">
-          <p class="section-title">Education</p>
-          <div class="edu-entry">
+        <section class="sec">
+          <span class="sec-label">Education</span>
+          <div class="edu">
             <p class="edu-school">[University Name]</p>
             <p class="edu-degree">BA Graphic Design<br>[Year] — [Year]</p>
           </div>
         </section>
 
-        <section class="section">
-          <p class="section-title">Languages</p>
-          <div class="skill-group">
-            <p class="skill-group-items">English — Fluent<br>Slovak — Native<br>[Language] — [Level]</p>
-          </div>
+        <section class="sec">
+          <span class="sec-label">Languages</span>
+          <p class="lang-list">
+            English — Fluent<br>
+            Slovak — Native<br>
+            [Language] — [Level]
+          </p>
         </section>
 
       </aside>
 
-      <!-- Right column -->
+      <!-- Right ─────────────────────────────── -->
       <main>
 
-        <section class="section summary">
-          <p class="section-title">About</p>
-          <p>Product designer with a focus on enterprise UX and security software. I translate complex technical systems into clear, human-centred interfaces — reducing friction for both end-users and business customers. Currently designing at ESET, one of Europe's leading cybersecurity companies.</p>
+        <section class="sec">
+          <span class="sec-label">About</span>
+          <p class="summary">Product designer with a focus on enterprise UX and security software. I translate complex technical systems into clear, human-centred interfaces — reducing friction for both end-users and business customers. Currently designing at ESET, one of Europe's leading cybersecurity companies.</p>
         </section>
 
-        <section class="section">
-          <p class="section-title">Experience</p>
+        <section class="sec">
+          <span class="sec-label">Experience</span>
 
           <div class="entry">
-            <div class="entry-header">
-              <span class="entry-company">ESET</span>
+            <div class="entry-head">
+              <span class="entry-co">ESET</span>
               <span class="entry-period">2022 — present</span>
             </div>
             <p class="entry-role">Product Designer · Bratislava, Slovakia</p>
             <ul class="entry-bullets">
-              <li>Led end-to-end redesign of the enterprise Security Dashboard, serving 50,000+ business users in 200 countries</li>
-              <li>Built and maintained a cross-product design system, adopted by 3 product teams</li>
-              <li>Reduced onboarding time by 40% through iterative UX research and A/B testing</li>
-              <li>Redesigned ESET Mobile for iOS & Android, improving App Store rating from 3.8 → 4.6</li>
+              <li>Led end-to-end redesign of enterprise Security Dashboard serving 50,000+ business users in 200 countries</li>
+              <li>Built and maintained cross-product design system adopted across 3 product teams</li>
+              <li>Reduced user onboarding time by 40% through iterative research and A/B testing</li>
+              <li>Redesigned ESET Mobile for iOS & Android, improving App Store rating 3.8 → 4.6</li>
             </ul>
           </div>
 
           <div class="entry">
-            <div class="entry-header">
-              <span class="entry-company">[Previous Company]</span>
+            <div class="entry-head">
+              <span class="entry-co">[Previous Company]</span>
               <span class="entry-period">[Year] — [Year]</span>
             </div>
             <p class="entry-role">[Role] · [Location]</p>
@@ -371,12 +380,12 @@
 
         </section>
 
-        <section class="section">
-          <p class="section-title">Selected Projects</p>
+        <section class="sec">
+          <span class="sec-label">Selected Projects</span>
 
           <div class="entry">
-            <div class="entry-header">
-              <span class="entry-company">Security Dashboard — ESET</span>
+            <div class="entry-head">
+              <span class="entry-co">Security Dashboard — ESET</span>
             </div>
             <ul class="entry-bullets">
               <li>Redesigned from scratch based on 30+ stakeholder interviews and competitive analysis</li>
@@ -384,21 +393,24 @@
           </div>
 
           <div class="entry">
-            <div class="entry-header">
-              <span class="entry-company">ESET Mobile App</span>
+            <div class="entry-head">
+              <span class="entry-co">ESET Mobile App</span>
             </div>
             <ul class="entry-bullets">
-              <li>Full UX/UI overhaul across iOS & Android; shipped within a 3-month sprint cycle</li>
+              <li>Full UX/UI overhaul for iOS & Android; shipped within a 3-month sprint cycle</li>
             </ul>
           </div>
 
         </section>
 
-        <p class="cv-tagline">"I turn complexity into clarity."</p>
-
       </main>
 
     </div>
+
+    <footer class="cv-foot">
+      <span class="cv-foot-quote">"I turn complexity into clarity."</span>
+      <span class="cv-foot-url">robertkolek.com</span>
+    </footer>
 
   </div>
 
