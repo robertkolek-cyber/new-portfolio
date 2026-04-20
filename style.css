@@ -137,8 +137,31 @@ body {
   color: rgba(0,0,0,0.38);
 }
 
+.hero-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .avail {
   color: rgba(0,0,0,0.5);
+}
+
+.avail::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3ecf5a;
+  margin-right: 5px;
+  vertical-align: middle;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
 }
 
 /* ─── Role ───────────────────────────────────────── */
